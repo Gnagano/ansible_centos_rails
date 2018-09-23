@@ -1,0 +1,27 @@
+---
+
+- fail:
+    msg: "The variables 'rails_required_libraries' and 'rbenv_install_dir' are required. please define in the defults/main.yml"
+  when:  ( rails_required_libraries is not defined )
+      or ( rbenv_install_dir is not defined )
+
+# get the shell output of "ruby -v"
+- block:
+  - name: get the ruby version output
+    shell: "{{ rbenv_install_dir }}/shims/ruby -v"
+    register: current_ruby_version_output
+
+  environment:
+  - PATH: "{{ rbenv_install_dir }}/bin/:{{ lookup('env','PATH') }}"
+  - RBENV_ROOT: "{{ rbenv_install_dir }}"
+  when: rbenv_install_dir is defined
+
+# get only version number
+- name: get the ruby version number
+  set_fact:
+    current_ruby_version : "{{ current_ruby_version_output.stdout | regex_search('[0-9]+.[0-9]+') }}"
+
+# fail if ruby version < 2.2
+- fail:
+    msg: "The ruby version shuould be >= 2.2 to install rails. Your ruby version is {{ current_ruby_version }}"
+  when: current_ruby_version < "2.2"
