@@ -1,6 +1,4 @@
-# Install rails with ruby in rbenv
-
-===
+# Ansible Role: Install rails with ruby in rbenv
 
 Ansible Role: Install rails with ruby in rbenv
 
