@@ -1,0 +1,20 @@
+---
+- block:
+  - name: gem update
+    shell: rbenv exec gem install bundler
+
+  - name: rbenv rehash
+    shell: rbenv rehash
+
+  - name: gem update
+    shell: gem update
+
+  - name: gem update --system
+    shell: gem update --system
+
+  - name: install rails
+    shell: "{{ rbenv_install_dir }}/shims/gem install -v {{ rails_version |  default('4.1.6') }} rails --no-ri --no-rdoc"
+
+  environment:
+  - PATH: "{{ rbenv_install_dir }}/bin/:{{ lookup('env','PATH') }}"
+  - RBENV_ROOT: "{{ rbenv_install_dir }}"

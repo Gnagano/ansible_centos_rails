@@ -1,0 +1,20 @@
+rails_required_libraries:
+    - apr-devel
+    - apr-util-devel
+    - automake
+    - autoconf
+    - curl-devel
+    - httpd-devel
+    - gcc
+    - gcc-c++.x86_64
+    - make
+    - openssl-devel
+    - readline-devel
+    - ruby-devel
+    - rubygems
+    - ruby-rdoc
+    - sqlite-devel
+    - zlib-devel
+
+rails_version: 4.1.6
+rbenv_install_dir: "/opt/anyenv/envs/rbenv"

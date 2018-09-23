@@ -1,0 +1,5 @@
+---
+# check the requirements
+- include_tasks: requirements.yml tags=rails
+- include_tasks: prepare.yml tags=rails
+- include_tasks: install.yml tags=rails

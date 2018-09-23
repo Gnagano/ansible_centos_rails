@@ -1,0 +1,9 @@
+ruby:
+  required_libraries:
+    - gcc
+    - openssl-devel
+    - readline-devel
+    - zlib-devel
+
+rbenv:
+  install_dir: "{{ anyenv_root | default('/opt/anyenv') }}/envs/rbenv"
