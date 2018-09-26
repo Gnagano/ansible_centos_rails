@@ -10,9 +10,6 @@ rails_required_libraries:
     - make
     - openssl-devel
     - readline-devel
-    - ruby-devel
-    - rubygems
-    - ruby-rdoc
     - sqlite-devel
     - zlib-devel
 
